@@ -13,27 +13,30 @@ import java.util.List;
 @RequestMapping("mett")
 public class mettcontroller {
 
-@Resource
+    @Resource
     private mettservice mettservice;
 
-@RequestMapping("findq")
+    @RequestMapping("findq")
     @ResponseBody
-    public List<kmeeting>findq(){
-    return mettservice.findq();
-}
+    public List<kmeeting> findq(kmeeting km) {
+        return mettservice.findq(km);
+    }
+
     @RequestMapping("delete")
     @ResponseBody
-    public void delete(Integer id){
+    public void delete(Integer id) {
         mettservice.delete(id);
     }
+
     @RequestMapping("add")
     @ResponseBody
-    public void add(kmeeting po){
+    public void add(kmeeting po) {
         mettservice.add(po);
     }
+
     @RequestMapping("huixian")
     @ResponseBody
-    public kmeeting select(Integer id){
+    public kmeeting select(Integer id) {
         return mettservice.select(id);
     }
 }

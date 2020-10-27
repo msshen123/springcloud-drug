@@ -3,6 +3,7 @@ package com.jk.entity;
 import lombok.Data;
 
 import java.util.List;
+
 @Data
 public class tbtree {
     private Integer id;

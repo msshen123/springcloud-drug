@@ -1,166 +1,168 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>用户管理</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <!--<link href="../resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
-    <link href="../resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
-    <link href="../data/styles.css" type="text/css" rel="stylesheet"/>
-    <link href="../files/用户管理/styles.css" type="text/css" rel="stylesheet"/>
-    <script src="../resources/scripts/jquery-1.7.1.min.js"></script>
-    <script src="../resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
-    <script src="../resources/scripts/prototypePre.js"></script>
-    <script src="../data/document.js"></script>
-    <script src="../resources/scripts/prototypePost.js"></script>
-    <script src="../files/用户管理/data.js"></script>
-    <script type="text/javascript">
-        $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
-        $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
-        $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
-    </script>-->
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7/dist/css/bootstrap.css}">
-    <link rel="stylesheet" href="../jslib/bootstrap/css/bootstrap-table.min.css">
-    <script th:src="@{/webjars/jquery/3.5.1/dist/jquery.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/3.3.7/dist/js/bootstrap.min.js}"></script>
-    <script src="../jslib/bootstrap/js/bootstrap-table.min.js"></script>
-    <script src="../jslib/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+    <meta charset="UTF-8">
+    <title>淦用户管理页面</title>
+    <link rel="stylesheet" href="/ps/bootstrap/css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="/ps/bootstrap/css/bootstrap.min.css">
+
+    <script type="text/javascript" src="/ps/jquery.min.js"></script>
+    <script type="text/javascript" src="/ps/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/ps/bootstrap/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="/ps/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
 </head>
 <body>
-    <div class="pull-left">
-        <div class="form-group form-inline">
-            <div class="btn-group">
-                <button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal" ><i class="fa fa-file-o"></i>添加</button>
-                <button type="button" class="btn btn-default" title="删除" ><i class="fa fa-trash-o"></i>删除</button>
-                <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i>刷新</button>
-            </div>
+<div class="pull-left">
+    <div class="form-group form-inline">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal"><i
+                    class="fa fa-file-o"></i>添加
+            </button>
+            <button type="button" class="btn btn-default" title="删除"><i class="fa fa-trash-o"></i>删除</button>
+            <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i
+                    class="fa fa-refresh"></i>刷新
+            </button>
         </div>
     </div>
-    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog" >
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h3 id="myModalLabel">添加用户</h3>
-                </div>
-                <div class="modal-body">
-                    <form method="post" id="ff">
-                        <input type="hidden" name="userId" id="userId">
-                        <table class="table table-bordered table-striped"  width="800px">
-                            <tr>
-                                <td>用户名（手机号）</td>
-                                <td><input  class="form-control" placeholder="用户名（手机号）" name="userCode" id="userCode"></td>
-                            </tr>
-                            <tr>
-                                <td>姓名</td>
-                                <td><input  class="form-control" placeholder="姓名" name="userName" id="userName"></td>
-                            </tr>
-                            <tr>
-                                <td>工号</td>
-                                <td><input  class="form-control" placeholder="工号" name="userNum" id="userNum"></td>
-                            </tr>
-                            <tr>
-                                <td>产品组</td>
-                                <td>
-                                    <input  type="radio"  name="userPro" value="1">CV
-                                    <input  type="radio"  name="userPro" value="2">DIA
-                                    <input  type="radio"  name="userPro" value="3">社区组
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>部门</td>
-                                <td><input  type="radio"  name="userDep" value="1">市场部
-                                    <input  type="radio"  name="userDep" value="2">销售部
-                                    <input  type="radio"  name="userDep" value="3">财务部</td>
-                            </tr>
-                            <tr>
-                                <td>职位</td>
-                                <td><input  type="radio"  name="userEmp" value="1">产品经理
-                                    <input  type="radio"  name="userEmp" value="2">大区经理
-                                    <input  type="radio"  name="userEmp" value="3">地区经理
-                                    <input  type="radio"  name="userEmp" value="4">医药代表</td>
-                            </tr>
-                            <tr>
-                                <td>添加时间</td>
-                                <td><input  type="text" placeholder="添加时间" name="userDate" id="userDate"></td>
-                            </tr>
+</div>
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h3 id="myModalLabel">添加用户</h3>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="ff">
+                    <input type="hidden" name="userId" id="userId">
+                    <table class="table table-bordered table-striped" width="800px">
+                        <tr>
+                            <td>用户名（手机号）</td>
+                            <td><input class="form-control" placeholder="用户名（手机号）" name="userCode" id="userCode"></td>
+                        </tr>
+                        <tr>
+                            <td>姓名</td>
+                            <td><input class="form-control" placeholder="姓名" name="userName" id="userName"></td>
+                        </tr>
+                        <tr>
+                            <td>工号</td>
+                            <td><input class="form-control" placeholder="工号" name="userNum" id="userNum"></td>
+                        </tr>
+                        <tr>
+                            <td>产品组</td>
+                            <td>
+                                <input type="radio" name="userPro" value="1">CV
+                                <input type="radio" name="userPro" value="2">DIA
+                                <input type="radio" name="userPro" value="3">社区组
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>部门</td>
+                            <td><input type="radio" name="userDep" value="1">市场部
+                                <input type="radio" name="userDep" value="2">销售部
+                                <input type="radio" name="userDep" value="3">财务部
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>职位</td>
+                            <td><input type="radio" name="userEmp" value="1">产品经理
+                                <input type="radio" name="userEmp" value="2">大区经理
+                                <input type="radio" name="userEmp" value="3">地区经理
+                                <input type="radio" name="userEmp" value="4">医药代表
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>添加时间</td>
+                            <td><input type="text" placeholder="添加时间" name="userDate" id="userDate"></td>
+                        </tr>
 
-                        </table>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="javascript:getAdd()">保存</button>
-                    <button class="btn btn-default" data-dismiss="modal" aria-hidden="true" >关闭</button>
-                </div>
+                    </table>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="javascript:getAdd()">
+                    保存
+                </button>
+                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
             </div>
         </div>
     </div>
-    <table id="user_table"></table>
+</div>
+<table id="user_table"></table>
 </body>
 <script type="text/javascript">
-    $(function(){
+    $(function () {
         find();
     })
-    function find(){
+
+    function find() {
         $("#user_table").bootstrapTable({
-            url:"/find",
-            columns:[
-                {field:"chec",checkbox:true},
-                {field:"userCode",title:"用户名（手机号）"},
-                {field:"userName",title:"姓名"},
-                {field:"userNum",title:"工号"},
-                {field:"userPro",title:"产品组",formatter:function(value,row,index){
-                    var str="";
-                    if(value=="1"){
-                        str="CV";
-                    }else if(value=="2"){
-                        str="DIA";
-                    }else if(value=="3"){
-                        str="社区组";
+            url: "/find",
+            columns: [
+                {field: "chec", checkbox: true},
+                {field: "userCode", title: "用户名（手机号）"},
+                {field: "userName", title: "姓名"},
+                {field: "userNum", title: "工号"},
+                {
+                    field: "userPro", title: "产品组", formatter: function (value, row, index) {
+                        var str = "";
+                        if (value == "1") {
+                            str = "CV";
+                        } else if (value == "2") {
+                            str = "DIA";
+                        } else if (value == "3") {
+                            str = "社区组";
+                        }
+                        return str;
                     }
-                    return str;
-                }},
-                {field:"userDep",title:"部门",formatter:function(value,row,index){
-                        var dep="";
-                        if(value=="1"){
-                            dep="市场部";
-                        }else if(value=="2"){
-                            dep="销售部";
-                        }else if(value=="3"){
-                            dep="财务部";
+                },
+                {
+                    field: "userDep", title: "部门", formatter: function (value, row, index) {
+                        var dep = "";
+                        if (value == "1") {
+                            dep = "市场部";
+                        } else if (value == "2") {
+                            dep = "销售部";
+                        } else if (value == "3") {
+                            dep = "财务部";
                         }
                         return dep;
-                }},
-                {field:"userEmp",title:"职位",formatter:function(value,row,index){
-                        var emp="";
-                        if(value=="1"){
-                            emp="产品经理";
-                        }else if(value=="2"){
-                            emp="大区经理";
-                        }else if(value=="3"){
-                            emp="地区经理";
-                        }else if(value=="4"){
-                            emp="医药代表";
+                    }
+                },
+                {
+                    field: "userEmp", title: "职位", formatter: function (value, row, index) {
+                        var emp = "";
+                        if (value == "1") {
+                            emp = "产品经理";
+                        } else if (value == "2") {
+                            emp = "大区经理";
+                        } else if (value == "3") {
+                            emp = "地区经理";
+                        } else if (value == "4") {
+                            emp = "医药代表";
                         }
                         return emp;
-                }},
-                {field:"userDate",title:"添加时间"},
-                {field:"zuo",title:"操作",formatter:function(value,row,index){
-                    var str="";
-                    str+="<a href='javascript:getDelete("+row.userId+")'>删除&nbsp;&nbsp;</a>";
-                    str+="<button type='button' class='btn bg-olive btn-xs' data-toggle='modal' data-target='#editModal' onclick='javascript:getHuiXian("+row.userId+")'>修改</button>";
-                    return str;
-                }}
+                    }
+                },
+                {field: "userDate", title: "添加时间"},
+                {
+                    field: "zuo", title: "操作", formatter: function (value, row, index) {
+                        var str = "";
+                        str += "<a href='javascript:getDelete(" + row.userId + ")'>删除&nbsp;&nbsp;</a>";
+                        str += "<button type='button' class='btn bg-olive btn-xs' data-toggle='modal' data-target='#editModal' onclick='javascript:getHuiXian(" + row.userId + ")'>修改</button>";
+                        return str;
+                    }
+                }
             ]
         })
     }
-    function getHuiXian(userId){
+
+    function getHuiXian(userId) {
         $.ajax({
-            url:"/huixian",
-            type:"post",
-            data:{userId:userId},
-            success:function(data){
+            url: "/huixian",
+            type: "post",
+            data: {userId: userId},
+            success: function (data) {
                 console.log(data)
                 $("#userId").val(data.userId);
                 $("#userCode").val(data.userCode);
@@ -173,25 +175,27 @@
             }
         })
     }
-    function getDelete(userId){
+
+    function getDelete(userId) {
         alert(userId);
         $.ajax({
-            url:"/delete",
-            type:"post",
-            data:{userId:userId},
-            dataType:"json",
-            success:function(){
+            url: "/delete",
+            type: "post",
+            data: {userId: userId},
+            dataType: "json",
+            success: function () {
                 alert("删除成功");
                 $("#user_table").bootstrapTable("refresh");
             }
         })
     }
-    function getAdd(){
+
+    function getAdd() {
         $.ajax({
-            url:"/add",
-            type:"post",
-            data:$("#ff").serialize(),
-            success:function(){
+            url: "/add",
+            type: "post",
+            data: $("#ff").serialize(),
+            success: function () {
                 alert("成功")
                 $("#user_table").bootstrapTable("refresh");
             }

@@ -18,22 +18,22 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("find")
-    public List<UserEntity> find(){
+    public List<UserEntity> find() {
         return userService.find();
     }
 
     @RequestMapping("delete")
-    public void delete(@RequestParam Integer userId){
+    public void delete(@RequestParam Integer userId) {
         userService.delete(userId);
     }
 
     @RequestMapping("add")
-    public void insert(@RequestBody UserEntity user){
+    public void insert(@RequestBody UserEntity user) {
         userService.insert(user);
     }
 
     @RequestMapping("huixian")
-    public UserEntity selectId(@RequestParam Integer userId){
+    public UserEntity selectId(@RequestParam Integer userId) {
         return userService.selectId(userId);
     }
 }

@@ -26,7 +26,7 @@ public class userServiceImpl implements UserService {
 
     @Override
     public void insert(UserEntity user) {
-        if(user.getUserId()!=null){
+        if (user.getUserId() != null) {
             userMapper.update(user);
         }
         userMapper.insert(user);
