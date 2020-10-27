@@ -1,9 +1,17 @@
 package com.jk.service;
 
-import com.jk.entity.User;
+import com.jk.entity.UserEntity;
+
+import java.util.List;
 
 public interface UserService {
 
-    public User findUserByUserCode(String usercode);
 
+    List<UserEntity> find();
+
+    void delete(Integer userId);
+
+    void insert(UserEntity user);
+
+    UserEntity selectId(Integer userId);
 }

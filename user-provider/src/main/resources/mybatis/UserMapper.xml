@@ -1,123 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.jk.mapper.UserMapper" >
-  <resultMap id="BaseResultMap" type="com.jk.entity.User" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="user_code" property="userCode" jdbcType="VARCHAR" />
-    <result column="user_name" property="userName" jdbcType="VARCHAR" />
-    <result column="password" property="password" jdbcType="VARCHAR" />
-    <result column="salt" property="salt" jdbcType="VARCHAR" />
-    <result column="locked" property="locked" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, user_code, user_name, password, salt, locked
-  </sql>
-  <!--<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from t_user
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from t_user
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.jk.entity.User" >
-    insert into t_user (id, user_code, user_name, 
-      password, salt, locked
-      )
-    values (#{id,jdbcType=INTEGER}, #{userCode,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{locked,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.jk.entity.User" >
-    insert into t_user
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="userCode != null" >
-        user_code,
-      </if>
-      <if test="userName != null" >
-        user_name,
-      </if>
-      <if test="password != null" >
-        password,
-      </if>
-      <if test="salt != null" >
-        salt,
-      </if>
-      <if test="locked != null" >
-        locked,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="userCode != null" >
-        #{userCode,jdbcType=VARCHAR},
-      </if>
-      <if test="userName != null" >
-        #{userName,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null" >
-        #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="salt != null" >
-        #{salt,jdbcType=VARCHAR},
-      </if>
-      <if test="locked != null" >
-        #{locked,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jk.entity.User" >
-    update t_user
-    <set >
-      <if test="userCode != null" >
-        user_code = #{userCode,jdbcType=VARCHAR},
-      </if>
-      <if test="userName != null" >
-        user_name = #{userName,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null" >
-        password = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="salt != null" >
-        salt = #{salt,jdbcType=VARCHAR},
-      </if>
-      <if test="locked != null" >
-        locked = #{locked,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.jk.entity.User" >
-    update t_user
-    set user_code = #{userCode,jdbcType=VARCHAR},
-      user_name = #{userName,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      salt = #{salt,jdbcType=VARCHAR},
-      locked = #{locked,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>-->
-
-
-  <select id="findSysUserByUsercode" parameterType="java.lang.String" resultMap="BaseResultMap">
-
- select  * from  t_user
-
- <where>
-
-   <if test="usercode !=null and usercode ! = '' ">
-
-      usercode = #{usercode}
-   </if>
- </where>
-
-  </select>
-
-
+<mapper namespace="com.jk.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.jk.entity.UserEntity" >
+        <id column="user_id" property="userId" jdbcType="INTEGER" />
+        <result column="user_code" property="userCode" jdbcType="VARCHAR" />
+        <result column="user_name" property="userName" jdbcType="VARCHAR" />
+        <result column="user_num" property="userNum" jdbcType="INTEGER" />
+        <result column="user_pro" property="userPro" jdbcType="VARCHAR" />
+        <result column="user_dep" property="userDep" jdbcType="VARCHAR" />
+        <result column="user_emp" property="userEmp" jdbcType="VARCHAR" />
+        <result column="user_date" property="userDate" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="find"  resultMap="BaseResultMap">
+        select * from tb_user
+    </select>
+    <delete id="delete">
+        delete from tb_user where user_id=#{userId}
+    </delete>
+    <insert id="insert" parameterType="com.jk.entity.UserEntity">
+        insert into tb_user values(#{userId},#{userCode},#{userName},#{userNum},#{userPro},#{userDep},#{userEmp},#{userDate})
+    </insert>
+    <select id="selectId" resultMap="BaseResultMap">
+        select * from tb_user where user_id=#{userId}
+    </select>
+    <update id="update" parameterType="com.jk.entity.UserEntity">
+        update tb_user set user_code=#{userCode},user_name=#{userName},user_num=#{userNum},user_pro=#{userPro},user_dep=#{userDep},user_emp=#{userEmp},user_date=#{userDate} where user_id=#{userId}
+    </update>
 </mapper>

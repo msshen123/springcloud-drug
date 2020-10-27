@@ -11,6 +11,8 @@ spring:
   thymeleaf:
     cache: false
     mode: LEGACYHTML5
+  main:
+    allow-bean-definition-overriding: true
 eureka:
   client:
     service-url:

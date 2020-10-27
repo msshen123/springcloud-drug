@@ -1,18 +1,18 @@
 package com.jk.controller;
 
-import org.apache.shiro.authc.UnknownAccountException;
-import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
+/*import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;*/
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+/*import org.springframework.ui.Model;*/
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletRequest;
+/*import javax.servlet.http.HttpServletRequest;*/
 
 @Controller
 @RequestMapping("jump")
 public class JumpController {
     //跳转登录页面
-    @RequestMapping("login")
+    /*@RequestMapping("login")
     public String login(HttpServletRequest request, Model model) {
        //获取异常提示信息
        String exception= (String) request.getAttribute("shiroLoginFailure");
@@ -28,7 +28,7 @@ public class JumpController {
        }
         model.addAttribute("message",message);
         return "login";
-    }
+    }*/
     //跳转树页面
     @RequestMapping("index")
     public String index(){
@@ -38,5 +38,10 @@ public class JumpController {
     @RequestMapping("act")
     public String act(){
         return "admin/act";
+    }
+
+    @RequestMapping("find")
+    public String find(){
+        return "user";
     }
 }
