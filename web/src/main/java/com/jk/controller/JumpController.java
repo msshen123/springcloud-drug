@@ -29,4 +29,14 @@ public class JumpController {
         model.addAttribute("message",message);
         return "login";
     }
+    //跳转树页面
+    @RequestMapping("index")
+    public String index(){
+        return "admin/index";
+    }
+    //跳转活动页面
+    @RequestMapping("act")
+    public String act(){
+        return "admin/act";
+    }
 }
