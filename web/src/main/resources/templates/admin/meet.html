@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>淦用户管理页面</title>
+    <link rel="stylesheet" href="/ps/bootstrap/css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="/ps/bootstrap/css/bootstrap.min.css">
+
+    <script type="text/javascript" src="/ps/jquery.min.js"></script>
+    <script type="text/javascript" src="/ps/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/ps/bootstrap/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="/ps/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+</head>
+<body>
+<div class="pull-left">
+    <div class="form-group form-inline">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal" ><i class="fa fa-file-o"></i> 新建</button>
+            <button type="button" class="btn btn-default" title="删除" ><i class="fa fa-trash-o"></i> 删除</button>
+            <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
+        </div>
+    </div>
+</div>
+<div class="box-tools pull-right">
+    <div class="has-feedback">
+        名称：<input  id="name">
+        <button class="btn btn-default" onclick="javascript:cha()">查询</button>
+
+    </div>
+</div>
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" >
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h3 id="myModalLabel">品牌编辑</h3>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="ff">
+                    <input type="hidden" name="meetingId" id="bid">
+                    <table class="table table-bordered table-striped"  width="800px">
+                        <tr>
+                            <td>会议名称</td>
+                            <td><input  class="form-control" placeholder="会议名称" name="meetingName" id="qname">  </td>
+                        </tr>
+                        <tr>
+                            <td>会议地点</td>
+                            <td><input  class="form-control" placeholder="会议地点" name="meetingPlace" id="servicefee">  </td>
+                        </tr>
+                        <tr>
+                            <td>产品组</td>
+                            <td><input  class="form-control" placeholder="产品组" name="productGroup" id="quantity">  </td>
+                        </tr>
+
+                        <!--<tr>
+                              <td>时间</td>
+                              <td><input  type="date" placeholder="时间" name="orderTime" id="memo">
+                              </td>
+                          </tr>-->
+                        <tr>
+                            <td>会议状态</td>
+                            <td><input  type="radio"  name="meetingStatus" value="1">未开始
+                                <input  type="radio"  name="meetingStatus" value="2">进行中
+                                <input  type="radio"  name="meetingStatus" value="3">已结束</td>
+                        </tr>
+
+                    </table>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="javascript:add()">保存</button>
+                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true" >关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table" id="myTable"></table>
+</body>
+<script type="text/javascript">
+    $(function(){
+        initTable()
+    })
+    function cha(){
+        $("#myTable").bootstrapTable("refresh",{
+            query:{
+                name:$("#name").val(),
+            }
+        })
+    }
+    function initTable() {
+        $("#myTable").bootstrapTable({
+            url:"/mett/findq",
+            columns: [
+                {checkbox: true},
+                {field: 'meetingId', title: 'ID', align: 'center', width: 150},
+                {field: 'meetingName', title: '会议名称', align: 'center', width: 150},
+                {field: 'meetingPlace', title: '会议地点', align: 'center', width: 150},
+                {field: 'meetingDate', title: '会议日期', align: 'center', width: 150},
+                {field: 'meetingStatus', title: '会议状态', align: 'center', width: 150},
+                {field: 'productGroup', title: '产品组', align: 'center', width: 150},
+                {field: 'tool', title: '操作', align: 'center', width: 150,
+                    formatter:function(value,rows,index){
+                        var str="";
+                        str+="<a href='javascript:deletePatientById("+rows.meetingId+")'>删除&nbsp;&nbsp;</a>";
+                        str+="<button type='button' class='btn bg-olive btn-xs' data-toggle='modal' data-target='#editModal' onclick='javascript:xiugai("+rows.meetingId+")'>修改</button>";
+                        return str;
+                    }
+                },
+            ],
+             pagination:true,
+              pageSize:2,
+              pageList:[2,4,6],
+        });
+    }
+    function deletePatientById(meetingId){
+        $.ajax({
+            url:"/mett/delete",
+            data:{id:meetingId},
+            type:"post",
+            success:function(){
+                $("#myTable").bootstrapTable("refresh");
+            }
+        })
+    }
+    function xiugai(meetingId){
+        alert(meetingId)
+        $.ajax({
+            url:"/mett/huixian",
+            type:"post",
+            data:{id:meetingId},
+            success:function(data){
+                console.log(data)
+                $("#bid").val(data.meetingId);
+                $("#qname").val(data.meetingName);
+                $("#servicefee").val(data.meetingPlace);
+                $("#quantity").val(data.productGroup);
+
+            }
+
+        })
+    }
+    function add(){
+        $.ajax({
+            url:"/mett/add",
+            type:"post",
+            data:$("#ff").serialize(),
+            success:function(){
+                alert("成功")
+                $("#myTable").bootstrapTable("refresh");
+            }
+        })
+    }
+</script>
+</html>

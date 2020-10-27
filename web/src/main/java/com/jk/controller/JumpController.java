@@ -41,7 +41,12 @@ public class JumpController {
     }
 
     @RequestMapping("find")
-    public String find(){
+    public String find() {
         return "user";
+    }
+    //跳转会议页面
+    @RequestMapping("meet")
+    public String meet(){
+        return "admin/meet";
     }
 }
