@@ -9,7 +9,7 @@ public class tbtree {
 
     private String text;
 
-    private String herf;
+    private String href;
 
     private Integer pid;
     private List<tbtree> nodes;
@@ -23,9 +23,6 @@ public class tbtree {
         this.text = text;
     }
 
-    public void setHerf(String herf) {
-        this.herf = herf;
-    }
 
     public void setPid(Integer pid) {
         this.pid = pid;
@@ -51,9 +48,6 @@ public class tbtree {
         return text;
     }
 
-    public String getHerf() {
-        return herf;
-    }
 
     public Integer getPid() {
         return pid;

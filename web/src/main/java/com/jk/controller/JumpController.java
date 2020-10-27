@@ -39,4 +39,9 @@ public class JumpController {
     public String act(){
         return "admin/act";
     }
+    //跳转会议页面
+    @RequestMapping("meet")
+    public String meet(){
+        return "admin/meet";
+    }
 }
