@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.jk.mapper.JobMapper">
-    <select id="find" resultType="JobEntity">
-        select * from tb_job
+    <resultMap id="BaseResultMap" type="com.jk.entity.JobEntity" >
+        <id column="job_id" property="jobId" jdbcType="INTEGER" />
+        <result column="job_name" property="jobName" jdbcType="VARCHAR" />
+        <result column="job_memo" property="jobMemo" jdbcType="VARCHAR" />
+        <result column="job_status" property="jobStatus" jdbcType="VARCHAR" />
+        <result column="job_date" property="jobDate" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="jobSql">
+        <where>
+            <if test="jobName!=null and jobName!= ''">
+                and job_name like '%${jobName}%'
+            </if>
+        </where>
+    </sql>
+    <select id="findPage" resultMap="BaseResultMap">
+        select * from tb_job <include refid="jobSql"></include>
     </select>
+    <select id="getHui" resultMap="BaseResultMap">
+        select * from tb_job where job_id=#{jobId}
+    </select>
+    <delete id="getDelete">
+        delete from tb_job where job_id=#{jobId}
+    </delete>
+    <insert id="getAdd" parameterType="com.jk.entity.JobEntity">
+        insert into tb_job values(#{jobId},#{jobName},#{jobMemo},#{jobStatus},#{jobDate})
+    </insert>
+    <update id="getUpdate" parameterType="com.jk.entity.JobEntity">
+        update tb_job set job_name=#{jobName},job_memo=#{jobMemo},job_status=#{jobStatus},job_date=#{jobDate} where job_id=#{jobId}
+    </update>
 </mapper>
