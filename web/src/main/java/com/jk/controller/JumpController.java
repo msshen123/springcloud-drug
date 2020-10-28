@@ -5,6 +5,7 @@ import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;*/
 import org.springframework.stereotype.Controller;
 /*import org.springframework.ui.Model;*/
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /*import javax.servlet.http.HttpServletRequest;*/
 
@@ -39,7 +40,7 @@ public class JumpController {
     public String act(){
         return "admin/act";
     }
-
+    //跳转用户页面
     @RequestMapping("find")
     public String find() {
         return "user";
@@ -49,4 +50,10 @@ public class JumpController {
     public String meet(){
         return "admin/meet";
     }
+    //跳转职务页面
+    @RequestMapping("job")
+    public String job() {
+        return "jop";
+    }
+
 }

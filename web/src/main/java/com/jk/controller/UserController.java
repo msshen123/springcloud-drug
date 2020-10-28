@@ -32,7 +32,7 @@ public class UserController {
     }
 
     @RequestMapping("huixian")
-    public UserEntity selectId(@RequestParam Integer userId){
+    public UserEntity selectId(Integer userId){
         return userService.selectId(userId);
     }
 }
