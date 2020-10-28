@@ -15,22 +15,26 @@
 <div class="pull-left">
     <div class="form-group form-inline">
         <div class="btn-group">
-            <button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal" ><i class="fa fa-file-o"></i> 新建</button>
-            <button type="button" class="btn btn-default" title="删除" ><i class="fa fa-trash-o"></i> 删除</button>
-            <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
+            <button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal"><i
+                    class="fa fa-file-o"></i> 新建
+            </button>
+            <button type="button" class="btn btn-default" title="删除"><i class="fa fa-trash-o"></i> 删除</button>
+            <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i
+                    class="fa fa-refresh"></i> 刷新
+            </button>
         </div>
     </div>
 </div>
 <div class="box-tools pull-right">
     <div class="has-feedback">
-        名称：<input  id="name">
+        名称：<input id="name">
         <button class="btn btn-default" onclick="javascript:cha()">查询</button>
 
     </div>
 </div>
 
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" >
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
@@ -39,18 +43,18 @@
             <div class="modal-body">
                 <form method="post" id="ff">
                     <input type="hidden" name="meetingId" id="bid">
-                    <table class="table table-bordered table-striped"  width="800px">
+                    <table class="table table-bordered table-striped" width="800px">
                         <tr>
                             <td>会议名称</td>
-                            <td><input  class="form-control" placeholder="会议名称" name="meetingName" id="qname">  </td>
+                            <td><input class="form-control" placeholder="会议名称" name="meetingName" id="qname"></td>
                         </tr>
                         <tr>
                             <td>会议地点</td>
-                            <td><input  class="form-control" placeholder="会议地点" name="meetingPlace" id="servicefee">  </td>
+                            <td><input class="form-control" placeholder="会议地点" name="meetingPlace" id="servicefee"></td>
                         </tr>
                         <tr>
                             <td>产品组</td>
-                            <td><input  class="form-control" placeholder="产品组" name="productGroup" id="quantity">  </td>
+                            <td><input class="form-control" placeholder="产品组" name="productGroup" id="quantity"></td>
                         </tr>
 
                         <!--<tr>
@@ -60,17 +64,19 @@
                           </tr>-->
                         <tr>
                             <td>会议状态</td>
-                            <td><input  type="radio"  name="meetingStatus" value="1">未开始
-                                <input  type="radio"  name="meetingStatus" value="2">进行中
-                                <input  type="radio"  name="meetingStatus" value="3">已结束</td>
+                            <td><input type="radio" name="meetingStatus" value="1">未开始
+                                <input type="radio" name="meetingStatus" value="2">进行中
+                                <input type="radio" name="meetingStatus" value="3">已结束
+                            </td>
                         </tr>
 
                     </table>
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="javascript:add()">保存</button>
-                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true" >关闭</button>
+                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="javascript:add()">保存
+                </button>
+                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
             </div>
         </div>
     </div>
@@ -79,19 +85,21 @@
 <table class="table" id="myTable"></table>
 </body>
 <script type="text/javascript">
-    $(function(){
+    $(function () {
         initTable()
     })
-    function cha(){
-        $("#myTable").bootstrapTable("refresh",{
-            query:{
-                name:$("#name").val(),
+
+    function cha() {
+        $("#myTable").bootstrapTable("refresh", {
+            query: {
+                meetingName: $("#name").val(),
             }
         })
     }
+
     function initTable() {
         $("#myTable").bootstrapTable({
-            url:"/mett/findq",
+            url: "/mett/findq",
             columns: [
                 {checkbox: true},
                 {field: 'meetingId', title: 'ID', align: 'center', width: 150},
@@ -100,37 +108,40 @@
                 {field: 'meetingDate', title: '会议日期', align: 'center', width: 150},
                 {field: 'meetingStatus', title: '会议状态', align: 'center', width: 150},
                 {field: 'productGroup', title: '产品组', align: 'center', width: 150},
-                {field: 'tool', title: '操作', align: 'center', width: 150,
-                    formatter:function(value,rows,index){
-                        var str="";
-                        str+="<a href='javascript:deletePatientById("+rows.meetingId+")'>删除&nbsp;&nbsp;</a>";
-                        str+="<button type='button' class='btn bg-olive btn-xs' data-toggle='modal' data-target='#editModal' onclick='javascript:xiugai("+rows.meetingId+")'>修改</button>";
+                {
+                    field: 'tool', title: '操作', align: 'center', width: 150,
+                    formatter: function (value, rows, index) {
+                        var str = "";
+                        str += "<a href='javascript:deletePatientById(" + rows.meetingId + ")'>删除&nbsp;&nbsp;</a>";
+                        str += "<button type='button' class='btn bg-olive btn-xs' data-toggle='modal' data-target='#editModal' onclick='javascript:xiugai(" + rows.meetingId + ")'>修改</button>";
                         return str;
                     }
                 },
             ],
-             pagination:true,
-              pageSize:2,
-              pageList:[2,4,6],
+            pagination: true,
+            pageSize: 2,
+            pageList: [2, 4, 6],
         });
     }
-    function deletePatientById(meetingId){
+
+    function deletePatientById(meetingId) {
         $.ajax({
-            url:"/mett/delete",
-            data:{id:meetingId},
-            type:"post",
-            success:function(){
+            url: "/mett/delete",
+            data: {id: meetingId},
+            type: "post",
+            success: function () {
                 $("#myTable").bootstrapTable("refresh");
             }
         })
     }
-    function xiugai(meetingId){
+
+    function xiugai(meetingId) {
         alert(meetingId)
         $.ajax({
-            url:"/mett/huixian",
-            type:"post",
-            data:{id:meetingId},
-            success:function(data){
+            url: "/mett/huixian",
+            type: "post",
+            data: {id: meetingId},
+            success: function (data) {
                 console.log(data)
                 $("#bid").val(data.meetingId);
                 $("#qname").val(data.meetingName);
@@ -141,12 +152,13 @@
 
         })
     }
-    function add(){
+
+    function add() {
         $.ajax({
-            url:"/mett/add",
-            type:"post",
-            data:$("#ff").serialize(),
-            success:function(){
+            url: "/mett/add",
+            type: "post",
+            data: $("#ff").serialize(),
+            success: function () {
                 alert("成功")
                 $("#myTable").bootstrapTable("refresh");
             }

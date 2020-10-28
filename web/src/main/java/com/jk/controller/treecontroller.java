@@ -13,12 +13,12 @@ import java.util.List;
 @RequestMapping("tree")
 public class treecontroller {
 
-@Resource
+    @Resource
     private treeservice treeservice;
 
-@RequestMapping("findtree")
-@ResponseBody
-    public List<tbtree>findtree(){
-    return treeservice.findtree();
-}
+    @RequestMapping("findtree")
+    @ResponseBody
+    public List<tbtree> findtree() {
+        return treeservice.findtree();
+    }
 }

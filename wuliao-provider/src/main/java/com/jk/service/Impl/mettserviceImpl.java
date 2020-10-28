@@ -7,14 +7,15 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+
 @Service
 public class mettserviceImpl implements mettservice {
     @Resource
     private kmeetingMapper kmeetingMapper;
 
     @Override
-    public List<kmeeting> findq() {
-        return kmeetingMapper.findq();
+    public List<kmeeting> findq(kmeeting km) {
+        return kmeetingMapper.findq(km);
 
     }
 
@@ -25,9 +26,9 @@ public class mettserviceImpl implements mettservice {
 
     @Override
     public void add(kmeeting ke) {
-        if(ke.getMeetingId()!=null){
+        if (ke.getMeetingId() != null) {
             kmeetingMapper.updateByPrimaryKey(ke);
-        }else{
+        } else {
             kmeetingMapper.insert(ke);
         }
     }

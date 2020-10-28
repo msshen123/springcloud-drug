@@ -12,24 +12,27 @@ import java.util.List;
 
 @RestController
 public class mettcontroller {
-@Resource
+    @Resource
     private mettservice mettservice;
 
-@RequestMapping("findq")
-    public List<kmeeting>findq(){
-    return mettservice.findq();
-}
+    @RequestMapping("findq")
+    public List<kmeeting> findq(@RequestBody kmeeting km) {
+        return mettservice.findq(km);
+    }
+
     @RequestMapping("delete")
-    public void delete(@RequestParam Integer id){
+    public void delete(@RequestParam Integer id) {
         mettservice.delete(id);
     }
+
     @RequestMapping("add")
-    public void add(@RequestBody kmeeting po){
+    public void add(@RequestBody kmeeting po) {
         mettservice.add(po);
 
     }
+
     @RequestMapping("select")
-    public kmeeting select(@RequestParam Integer id){
+    public kmeeting select(@RequestParam Integer id) {
 
         return mettservice.select(id);
     }

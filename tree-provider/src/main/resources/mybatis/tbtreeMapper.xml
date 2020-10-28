@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.jk.mapper.tbtreeMapper" >
-  <resultMap id="BaseResultMap" type="com.jk.entity.tbtree" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="text" property="text" jdbcType="VARCHAR" />
-    <result column="href" property="href" jdbcType="VARCHAR" />
-    <result column="pid" property="pid" jdbcType="INTEGER" />
-  </resultMap>
-  <select id="find" resultMap="BaseResultMap">
-    select * from tb_tree where pid=#{pid}
-  </select>
+<mapper namespace="com.jk.mapper.tbtreeMapper">
+    <resultMap id="BaseResultMap" type="com.jk.entity.tbtree">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="text" property="text" jdbcType="VARCHAR"/>
+        <result column="href" property="href" jdbcType="VARCHAR"/>
+        <result column="pid" property="pid" jdbcType="INTEGER"/>
+    </resultMap>
+    <select id="find" resultMap="BaseResultMap">
+        select * from tb_tree where pid=#{pid}
+    </select>
 </mapper>

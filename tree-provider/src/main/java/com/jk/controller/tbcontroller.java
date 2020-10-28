@@ -10,11 +10,11 @@ import java.util.List;
 
 @RestController
 public class tbcontroller {
-@Resource
+    @Resource
     private tbservice tbservice;
 
     @RequestMapping("qfind")
-    public List<tbtree> findtree(){
+    public List<tbtree> findtree() {
         return tbservice.find();
     }
 }

@@ -2,6 +2,7 @@ package com.jk.controller;
 
 /*import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;*/
+
 import org.springframework.stereotype.Controller;
 /*import org.springframework.ui.Model;*/
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,28 +33,44 @@ public class JumpController {
     }*/
     //跳转树页面
     @RequestMapping("index")
-    public String index(){
+    public String index() {
         return "admin/index";
     }
+
     //跳转活动页面
     @RequestMapping("act")
-    public String act(){
+    public String act() {
         return "admin/act";
     }
+<<<<<<< HEAD
     //跳转用户页面
+=======
+
+    //跳用户页面
+>>>>>>> 7e7e12273e336f4a43b22165ec0d7151cbd7b9ba
     @RequestMapping("find")
     public String find() {
         return "user";
     }
+
     //跳转会议页面
     @RequestMapping("meet")
-    public String meet(){
+    public String meet() {
         return "admin/meet";
     }
+<<<<<<< HEAD
     //跳转职务页面
     @RequestMapping("job")
     public String job() {
         return "jop";
     }
 
+=======
+
+    //跳转登录页面
+    @RequestMapping("login")
+    public String login() {
+        return "login";
+    }
+>>>>>>> 7e7e12273e336f4a43b22165ec0d7151cbd7b9ba
 }

@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(value="wuliao-provider")
+@FeignClient(value = "wuliao-provider")
 public interface mettservice {
 
     @RequestMapping("findq")
-    public List<kmeeting> findq();
+    public List<kmeeting> findq(@RequestBody kmeeting km);
 
     @RequestMapping("delete")
     public void delete(@RequestParam Integer id);

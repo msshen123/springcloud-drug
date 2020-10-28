@@ -5,7 +5,7 @@ import com.jk.entity.kmeeting;
 import java.util.List;
 
 public interface mettservice {
-    List<kmeeting> findq();
+    List<kmeeting> findq(kmeeting km);
 
     void delete(Integer id);
 

@@ -22,6 +22,36 @@
             <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i>刷新</button>
         </div>
     </div>
+<<<<<<< HEAD
+=======
+    <table class="table  table-hover">
+        <thead>
+        <tr>
+            <th>职务ID</th>
+            <th>职务名称</th>
+            <th>职务描述</th>
+            <th>职务状态</th>
+            <th>添加时间</th>
+            <th>删除</th>
+            <th>修改</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="job : ${jobList}">
+            <td th:text="${job.jobId}"></td>
+            <td th:text="${job.jobName}"></td>
+            <td th:text="${job.jobMemo}"></td>
+            <td th:text="${job.jobDate}"></td>
+            <td>
+                <a th:href="@{/delete(id=${job.jobId})}">DELETE</a>
+            </td>
+            <td>
+                <a th:href="@{/select(id=${job.jobId})}">UPDATE</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+>>>>>>> 7e7e12273e336f4a43b22165ec0d7151cbd7b9ba
 </div>
 <div class="box-tools pull-right">
     <div class="has-feedback">
