@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface JobService {
 
-    List<JobEntity> findPage();
+    List<JobEntity> findPage(JobEntity job);
 
     void getDelete(Integer jobId);
 

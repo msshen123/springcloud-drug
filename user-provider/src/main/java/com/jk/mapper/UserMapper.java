@@ -7,7 +7,7 @@ import java.util.List;
 
 @Mapper
 public interface UserMapper {
-    List<UserEntity> find();
+    List<UserEntity> find(UserEntity user);
 
     void delete(Integer userId);
 

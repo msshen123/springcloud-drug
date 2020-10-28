@@ -15,8 +15,8 @@ public class JobServiceImpl implements JobService {
     private JobMapper jobMapper;
 
     @Override
-    public List<JobEntity> findPage() {
-        return jobMapper.findPage();
+    public List<JobEntity> findPage(JobEntity job) {
+        return jobMapper.findPage(job);
     }
 
     @Override

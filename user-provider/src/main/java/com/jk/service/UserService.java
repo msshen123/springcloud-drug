@@ -7,7 +7,7 @@ import java.util.List;
 public interface UserService {
 
 
-    List<UserEntity> find();
+    List<UserEntity> find(UserEntity user);
 
     void delete(Integer userId);
 

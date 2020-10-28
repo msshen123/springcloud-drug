@@ -12,7 +12,7 @@ import java.util.List;
 public interface UserService {
 
     @RequestMapping("user/find")
-    public List<UserEntity> find();
+    public List<UserEntity> find(@RequestBody UserEntity user);
 
     @RequestMapping("user/delete")
     public void delete(@RequestParam Integer userId);
