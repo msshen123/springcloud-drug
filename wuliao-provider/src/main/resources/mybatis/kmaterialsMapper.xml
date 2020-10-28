@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.kmaterialsMapper" >
+  <resultMap id="BaseResultMap" type="com.jk.entity.kmaterials" >
+    <id column="materials_id" property="materialsId" jdbcType="INTEGER" />
+    <result column="materials_name" property="materialsName" jdbcType="VARCHAR" />
+    <result column="thumb" property="thumb" jdbcType="VARCHAR" />
+    <result column="materials_type" property="materialsType" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="count" property="count" jdbcType="INTEGER" />
+    <result column="materials_status" property="materialsStatus" jdbcType="INTEGER" />
+    <result column="remain_count" property="remaincount" jdbcType="INTEGER" />
+  </resultMap>
+
+  <select id="findpage" resultMap="BaseResultMap">
+   <bind name="key_offset" value="(page-1)*rows"/>
+   select * from k_materials
+  </select>
+  <select id="count" resultType="java.lang.Long">
+    select count(*) from k_materials
+  </select>
+  <select id="find" resultMap="BaseResultMap">
+    select * from k_materials where materials_status=1
+  </select>
+  <sql id="Base_Column_List" >
+    materials_id, materials_name, thumb, materials_type, price, count, materials_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from k_materials
+    where materials_id = #{materialsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from k_materials
+    where materials_id = #{materialsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jk.entity.kmaterials" >
+    insert into k_materials (materials_id, materials_name, thumb, 
+      materials_type, price, count, 
+      materials_status)
+    values (#{materialsId,jdbcType=INTEGER}, #{materialsName,jdbcType=VARCHAR}, #{thumb,jdbcType=VARCHAR}, 
+      #{materialsType,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, #{count,jdbcType=INTEGER}, 
+      #{materialsStatus,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jk.entity.kmaterials" >
+    insert into k_materials
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="materialsId != null" >
+        materials_id,
+      </if>
+      <if test="materialsName != null" >
+        materials_name,
+      </if>
+      <if test="thumb != null" >
+        thumb,
+      </if>
+      <if test="materialsType != null" >
+        materials_type,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="count != null" >
+        count,
+      </if>
+      <if test="materialsStatus != null" >
+        materials_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="materialsId != null" >
+        #{materialsId,jdbcType=INTEGER},
+      </if>
+      <if test="materialsName != null" >
+        #{materialsName,jdbcType=VARCHAR},
+      </if>
+      <if test="thumb != null" >
+        #{thumb,jdbcType=VARCHAR},
+      </if>
+      <if test="materialsType != null" >
+        #{materialsType,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="count != null" >
+        #{count,jdbcType=INTEGER},
+      </if>
+      <if test="materialsStatus != null" >
+        #{materialsStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jk.entity.kmaterials" >
+    update k_materials
+    <set >
+      <if test="materialsName != null" >
+        materials_name = #{materialsName,jdbcType=VARCHAR},
+      </if>
+      <if test="thumb != null" >
+        thumb = #{thumb,jdbcType=VARCHAR},
+      </if>
+      <if test="materialsType != null" >
+        materials_type = #{materialsType,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="count != null" >
+        count = #{count,jdbcType=INTEGER},
+      </if>
+      <if test="materialsStatus != null" >
+        materials_status = #{materialsStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where materials_id = #{materialsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jk.entity.kmaterials" >
+    update k_materials
+    set materials_name = #{materialsName,jdbcType=VARCHAR},
+      thumb = #{thumb,jdbcType=VARCHAR},
+      materials_type = #{materialsType,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      count = #{count,jdbcType=INTEGER},
+      materials_status = #{materialsStatus,jdbcType=INTEGER}
+    where materials_id = #{materialsId,jdbcType=INTEGER}
+  </update>
+</mapper>
