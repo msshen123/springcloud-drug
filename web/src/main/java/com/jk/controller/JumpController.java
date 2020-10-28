@@ -67,4 +67,16 @@ public class JumpController {
     public String login() {
         return "login";
     }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    //跳转回收站页面
+    @RequestMapping("mat")
+    public String mat() {
+        return "admin/mat";
+    }
+=======
+>>>>>>> 7e7e12273e336f4a43b22165ec0d7151cbd7b9ba
+>>>>>>> 6a9109c6077305d179d060b1e24749579bd62b0c
+>>>>>>> bea2214c469e73639988d6cbd3ff72c1fbf5f9dd
 }
