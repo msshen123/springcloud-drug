@@ -14,8 +14,8 @@ public class JobController {
     private JobService jobService;
 
     @RequestMapping("findPage")
-    public List<JobEntity> findPage(){
-        return jobService.findPage();
+    public List<JobEntity> findPage(JobEntity job){
+        return jobService.findPage(job);
     }
 
     @RequestMapping("del")

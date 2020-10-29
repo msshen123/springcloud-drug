@@ -42,12 +42,18 @@ public class JumpController {
     public String act() {
         return "admin/act";
     }
+<<<<<<< HEAD
 
     //跳转用户页面
 
 
     //跳用户页面
 
+=======
+    //跳转用户页面
+
+    //跳用户页面
+>>>>>>> 751cb76366088621dc4c64ee9dda2eb48481e68c
     @RequestMapping("find")
     public String find() {
         return "user";
@@ -58,25 +64,45 @@ public class JumpController {
     public String meet() {
         return "admin/meet";
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 751cb76366088621dc4c64ee9dda2eb48481e68c
     //跳转职务页面
     @RequestMapping("job")
     public String job() {
         return "jop";
     }
+<<<<<<< HEAD
 
 
+=======
+    
+>>>>>>> 751cb76366088621dc4c64ee9dda2eb48481e68c
 
     //跳转登录页面
     @RequestMapping("login")
     public String login() {
         return "login";
     }
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 751cb76366088621dc4c64ee9dda2eb48481e68c
     //跳转回收站页面
     @RequestMapping("mat")
     public String mat() {
         return "admin/mat";
     }
+<<<<<<< HEAD
 
+=======
+=======
+>>>>>>> 7e7e12273e336f4a43b22165ec0d7151cbd7b9ba
+>>>>>>> 6a9109c6077305d179d060b1e24749579bd62b0c
+>>>>>>> bea2214c469e73639988d6cbd3ff72c1fbf5f9dd
+>>>>>>> 751cb76366088621dc4c64ee9dda2eb48481e68c
 }

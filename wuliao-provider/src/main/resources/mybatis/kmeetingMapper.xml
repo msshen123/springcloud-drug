@@ -11,7 +11,6 @@
     </resultMap>
     <select id="select" resultMap="BaseResultMap">
         select * from k_meeting where meeting_id=#{id}
-
     </select>
     <select id="findq" resultMap="BaseResultMap">
         select * from k_meeting

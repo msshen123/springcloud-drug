@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface JobMapper {
 
-    List<JobEntity> findPage();
+    List<JobEntity> findPage(JobEntity job);
 
     void getDelete(Integer jobId);
 

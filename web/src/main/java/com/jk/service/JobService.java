@@ -12,7 +12,7 @@ import java.util.List;
 public interface JobService {
 
     @RequestMapping("job/findPage")
-    public List<JobEntity> findPage();
+    public List<JobEntity> findPage(@RequestBody JobEntity job);
 
     @RequestMapping("job/del")
     public void getDelete(@RequestParam Integer jobId);

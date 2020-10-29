@@ -11,8 +11,15 @@
         <result column="user_emp" property="userEmp" jdbcType="VARCHAR"/>
         <result column="user_date" property="userDate" jdbcType="VARCHAR"/>
     </resultMap>
+    <sql id="userSql">
+        <where>
+            <if test="userName!=null and userName!= ''">
+                and user_name like '%${userName}%'
+            </if>
+        </where>
+    </sql>
     <select id="find" resultMap="BaseResultMap">
-        select * from tb_user
+        select * from tb_user <include refid="userSql"></include>
     </select>
     <delete id="delete">
         delete from tb_user where user_id=#{userId}

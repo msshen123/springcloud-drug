@@ -18,8 +18,8 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("find")
-    public List<UserEntity> find() {
-        return userService.find();
+    public List<UserEntity> find(@RequestBody UserEntity user) {
+        return userService.find(user);
     }
 
     @RequestMapping("delete")

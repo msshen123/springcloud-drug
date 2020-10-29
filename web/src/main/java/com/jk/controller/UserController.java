@@ -17,8 +17,8 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("find")
-    public List<UserEntity> find() {
-        return userService.find();
+    public List<UserEntity> find( UserEntity user) {
+        return userService.find(user);
     }
 
     @RequestMapping("delete")
@@ -32,9 +32,13 @@ public class UserController {
     }
 
     @RequestMapping("huixian")
+<<<<<<< HEAD
 
     public UserEntity selectId(Integer userId){
 
+=======
+    public UserEntity selectId(Integer userId){
+>>>>>>> 751cb76366088621dc4c64ee9dda2eb48481e68c
         return userService.selectId(userId);
     }
 }
