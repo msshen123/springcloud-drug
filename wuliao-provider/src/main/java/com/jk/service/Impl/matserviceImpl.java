@@ -20,4 +20,9 @@ public class matserviceImpl implements matservice {
       long totalPage=total%rows == 0 ? total/rows : (total/rows + 1);
         return new PageResult(total,kmlist,page,rows,totalPage);
     }
+
+    @Override
+    public void deleteBrand(Integer id) {
+            kmaterialsMapper.deleteByPrimaryKey(id);
+    }
 }

@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface matservice {
     PageResult find(Integer page, Integer rows, kmaterials kma);
+
+    void deleteBrand(Integer id);
 }

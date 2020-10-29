@@ -42,12 +42,12 @@ public class JumpController {
     public String act() {
         return "admin/act";
     }
-<<<<<<< HEAD
+
     //跳转用户页面
-=======
+
 
     //跳用户页面
->>>>>>> 7e7e12273e336f4a43b22165ec0d7151cbd7b9ba
+
     @RequestMapping("find")
     public String find() {
         return "user";
@@ -58,27 +58,25 @@ public class JumpController {
     public String meet() {
         return "admin/meet";
     }
-<<<<<<< HEAD
+
     //跳转职务页面
     @RequestMapping("job")
     public String job() {
         return "jop";
     }
 
-=======
+
 
     //跳转登录页面
     @RequestMapping("login")
     public String login() {
         return "login";
     }
-<<<<<<< HEAD
+
     //跳转回收站页面
     @RequestMapping("mat")
     public String mat() {
         return "admin/mat";
     }
-=======
->>>>>>> 7e7e12273e336f4a43b22165ec0d7151cbd7b9ba
->>>>>>> 6a9109c6077305d179d060b1e24749579bd62b0c
+
 }

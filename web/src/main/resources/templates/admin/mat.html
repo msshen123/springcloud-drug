@@ -178,5 +178,25 @@
             }
         })
     }
+
+    //复选框选中
+    vm.selectIds=[];
+      function updateAelection($event,id){
+          if($event.target.checked){
+              vm.selectIds.push(id);
+          }else{
+              var idx=vm.selectIds.indexOf(id);
+              vm.selectIds.splice(idx,1);
+          }
+          console.info(vm.selectIds.toString());
+      }
+      //删除
+    function deleteBrand(){
+          $.ajax({
+              type:"post",
+              url:"<>"
+          })
+
+    }
 </script>
 </html>

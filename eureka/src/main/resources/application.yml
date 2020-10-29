@@ -8,10 +8,8 @@ eureka:
     register-with-eureka: false
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
-<<<<<<< HEAD
+
   server:
     enable-self-preservation: false
-=======
-    server:
-      enable-self-preservation: false
->>>>>>> 7e7e12273e336f4a43b22165ec0d7151cbd7b9ba
+
+

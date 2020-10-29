@@ -7,7 +7,7 @@ import java.util.List;
 
 @Mapper
 public interface kmaterialsMapper {
-    int deleteByPrimaryKey(Integer materialsId);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(kmaterials record);
 

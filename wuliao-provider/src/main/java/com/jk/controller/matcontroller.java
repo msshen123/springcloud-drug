@@ -19,4 +19,8 @@ public class matcontroller {
     public PageResult find(@RequestParam(value="page",defaultValue = "1") Integer page,@RequestParam(value="rows",defaultValue = "10")Integer rows,kmaterials kma){
     return matservice.find(page,rows,kma);
 }
+@RequestMapping("deleteBrand")
+    public void deleteBrand(@RequestParam Integer id){
+        matservice.deleteBrand(id);
+}
 }
